@@ -11,174 +11,205 @@
   <script type="text/javascript" src="js/main.js" defer></script>
 </head>
 <body>
-  <img src="/assets/images/bg-sidebar-mobile.svg" alt="Multi Step Form - Theme" width="100%" height="auto">
-  <nav>
-    <button class="active">1</button>
-    <button disabled>2</button>
-    <button disabled>3</button>
-    <button disabled>4</button>
-  </nav>
-  <form>
-    <fieldset id="firstStep" class="active">
-      <div class="info">
-        <h2>Personal info</h2>
-        <p>Please provide your name, email address, and phone number.</p>
-      </div>
-      <div class="inputs">
+  <div class="desktopWrapper">
+    <div class="desktopNav">
+      <img src="/assets/images/bg-sidebar-mobile.svg" alt="Multi Step Form - Theme" width="100%" height="auto">
+      <img src="/assets/images/bg-sidebar-desktop.svg" alt="Multi Step Form - Theme" width="100%" height="100%">
+      <nav>
         <div>
-          <div class="label">
-            <label for="name">Name</label>
-            <p>Name is required</p>
+          <button class="active">1</button>
+          <div class="desktop">
+            <p>STEP 1</p>
+            <p>YOUR INFO</p>
           </div>
-          <input type="text" id="name" name="name" placeholder="e.g. Stephen King" onkeyup="setValue(event)" required>
         </div>
         <div>
-          <div class="label">
-            <label for="email">Email Address</label>
-            <p>Email address is required</p>
+          <button disabled>2</button>
+          <div class="desktop">
+            <p>STEP 2</p>
+            <p>SELECT PLAN</p>
           </div>
-          <input type="email" id="emailAdresse" name="emailAdresse" placeholder="e.g. stephenking@lorem.com" onkeyup="setValue(event)" required>
         </div>
         <div>
-          <div class="label">
-            <label for="phone">Phone Number</label>
-            <p>Phone number is required</p>
+          <button disabled>3</button>
+          <div class="desktop">
+            <p>STEP 3</p>
+            <p>ADD-ONS</p>
           </div>
-          <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="e.g. +1 234 567 890" onkeyup="setValue(event)" required>
         </div>
-      </div>
-    </fieldset>
-    <fieldset id="secondStep">
-      <div class="info">
-        <h2>Select your plan</h2>
-        <p>You have the option of monthly or yearly billing.</p>
-      </div>
-      <div class="inputs">
-          <div class="selectField">
-            <input type="radio" name="plan" onchange="setValue(event)" value="Arcade" required>
-            <img src="assets/images/icon-arcade.svg" alt="Arcade" width="42" height="42">
-              <div>
-                <h3>Arcade</h3>
-                <p class="billingChange active">$9/mo</p>
-                <p class="billingChange">$90/yr</p>
-                <div class="yearly">
-                  <p>2 months free</p>
+        <div>
+          <button disabled>4</button>
+          <div class="desktop">
+            <p>STEP 4</p>
+            <p>SUMMARY</p>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="desktopForm">
+      <form>
+        <fieldset id="firstStep" class="active">
+          <div class="info">
+            <h2>Personal info</h2>
+            <p>Please provide your name, email address, and phone number.</p>
+          </div>
+          <div class="inputs">
+            <div>
+              <div class="label">
+                <label for="name">Name</label>
+                <p>Name is required</p>
+              </div>
+              <input type="text" id="name" name="name" placeholder="e.g. Stephen King" onkeyup="setValue(event)" required>
+            </div>
+            <div>
+              <div class="label">
+                <label for="email">Email Address</label>
+                <p>Email address is required</p>
+              </div>
+              <input type="email" id="emailAdresse" name="emailAdresse" placeholder="e.g. stephenking@lorem.com" onkeyup="setValue(event)" required>
+            </div>
+            <div>
+              <div class="label">
+                <label for="phone">Phone Number</label>
+                <p>Phone number is required</p>
+              </div>
+              <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="e.g. +1 234 567 890" onkeyup="setValue(event)" required>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset id="secondStep">
+          <div class="info">
+            <h2>Select your plan</h2>
+            <p>You have the option of monthly or yearly billing.</p>
+          </div>
+          <div class="inputs">
+              <div class="selectField">
+                <input type="radio" name="plan" onchange="setValue(event)" value="Arcade" required>
+                <img src="assets/images/icon-arcade.svg" alt="Arcade" width="42" height="42">
+                  <div>
+                    <h3>Arcade</h3>
+                    <p class="billingChange active">$9/mo</p>
+                    <p class="billingChange">$90/yr</p>
+                    <div class="yearly">
+                      <p>2 months free</p>
+                    </div>
+                  </div>
+              </div>
+              <div class="selectField">
+                <input type="radio" name="plan" onchange="setValue(event)" value="Advanced" required>
+                <img src="assets/images/icon-advanced.svg" alt="Arcade" width="42" height="42">
+                <div>
+                  <h3>Advanced</h3>
+                  <p class="billingChange active">$12/mo</p>
+                  <p class="billingChange">$120/yr</p>
+                  <div class="yearly">
+                    <p>2 months free</p>
+                  </div>
+                </div>
+              </div>
+              <div class="selectField">
+                <input type="radio" name="plan" onchange="setValue(event)" value="Pro" required>
+                <img src="assets/images/icon-pro.svg" alt="Arcade" width="42" height="42">
+                <div>
+                  <h3>Pro</h3>
+                  <p class="billingChange active">$15/mo</p>
+                  <p class="billingChange">$150/yr</p>
+                  <div class="yearly">
+                    <p>2 months free</p>
+                  </div>
                 </div>
               </div>
           </div>
-          <div class="selectField">
-            <input type="radio" name="plan" onchange="setValue(event)" value="Advanced" required>
-            <img src="assets/images/icon-advanced.svg" alt="Arcade" width="42" height="42">
+          <div id="switchBilling" class="switchBilling">
             <div>
-              <h3>Advanced</h3>
-              <p class="billingChange active">$12/mo</p>
-              <p class="billingChange">$120/yr</p>
-              <div class="yearly">
-                <p>2 months free</p>
+              <input type="radio" name="billing" onchange="switchBilling(event)" value="Monthly" required>
+              <input type="radio" name="billing" onchange="switchBilling(event)" value="Yearly" required>
+              <div></div>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset id="thirdStep">
+          <div class="info">
+            <h2>Pick add-ons</h2>
+            <p>Add-ons help enhance your gaming experience.</p>
+          </div>
+          <div class="inputs">
+            <div class="checkField">
+              <div>
+                <input type="checkbox" id="onlineService" name="Online Service" onchange="setValue(event, 'addOn')">
+                <label for="onlineService"></label>
+                <div>
+                  <h3>Online Service</h3>
+                  <p>Access to multiplayer games</p>
+                </div>
               </div>
+              <p class="billingChange active">+$1/mo</p>
+              <p class="billingChange">+$10/yr</p>
             </div>
-          </div>
-          <div class="selectField">
-            <input type="radio" name="plan" onchange="setValue(event)" value="Pro" required>
-            <img src="assets/images/icon-pro.svg" alt="Arcade" width="42" height="42">
-            <div>
-              <h3>Pro</h3>
-              <p class="billingChange active">$15/mo</p>
-              <p class="billingChange">$150/yr</p>
-              <div class="yearly">
-                <p>2 months free</p>
+            <div class="checkField">
+              <div>
+                <input type="checkbox" id="largerStorage" name="Larger Storage" onchange="setValue(event, 'addOn')">
+                <label for="largerStorage"></label>
+                <div>
+                  <h3>Larger Storage</h3>
+                  <p>Extra 1TB of cloud save</p>
+                </div>
               </div>
+              <p class="billingChange active">+$2/mo</p>
+              <p class="billingChange">+$20/yr</p>
+            </div>
+            <div class="checkField">
+              <div>
+                <input type="checkbox" id="customizableProfile" name="Customizable profile" onchange="setValue(event, 'addOn')">
+                <label for="customizableProfile"></label>
+                <div>
+                  <h3>Customizable profile</h3>
+                  <p>Custom theme on your profile</p>
+                </div>
+              </div>
+              <p class="billingChange active">+$2/mo</p>
+              <p class="billingChange">+$20/yr</p>
             </div>
           </div>
-      </div>
-      <div id="switchBilling" class="switchBilling">
+        </fieldset>
+        <fieldset id="lastStep">
+          <div class="info">
+            <h2>Finishing up</h2>
+            <p>Double-check everything looks OK before confirming.</p>
+          </div>
+          <div class="summary">
+            <div>
+              <div>
+                <p id="plan"></p>
+                <button onclick="changeStep(undefined, 1)">Change</button>
+              </div>
+              <p id="planPrice"></p>
+            </div>
+            <hr id="ifAddOn">
+            <hr id="insertDivs" class="insertDivs">
+          </div>
+          <div class="total">
+            <p id="total"></p>
+            <p id="totalPrice"></p>
+          </div>
+        </fieldset>
+        <fieldset id="submit" class="submit">
+          <img src="assets/images/icon-thank-you.svg" alt="Thank You!" width="62.5" height="62.5">
+          <div>
+            <h2>Thank you!</h2>
+            <p>Thanks for confirming your subscription! We hope you have fun 
+              using our platform. If you ever need support, please feel free 
+              to email us at <a href="mailto:support@loremgaming.com">support@loremgaming.com</a>.</p>
+          </div>
+        </fieldset>
+      </form>
+      <div class="bottomNavigation">
         <div>
-          <input type="radio" name="billing" onchange="switchBilling(event)" value="Monthly" required>
-          <input type="radio" name="billing" onchange="switchBilling(event)" value="Yearly" required>
-          <div></div>
+          <button id="goBackBtn" class="goBackBtn inactive" onclick="changeStep(false)">Go Back</button>
+          <button class="nextBtn" onclick="changeStep(true)">Next Step</button>
+          <button id="submitBtn" class="submitBtn" onclick="submit()">Confirm</button>
         </div>
       </div>
-    </fieldset>
-    <fieldset id="thirdStep">
-      <div class="info">
-        <h2>Pick add-ons</h2>
-        <p>Add-ons help enhance your gaming experience.</p>
-      </div>
-      <div class="inputs">
-        <div class="checkField">
-          <div>
-            <input type="checkbox" id="onlineService" name="Online Service" onchange="setValue(event, 'addOn')">
-            <label for="onlineService"></label>
-            <div>
-              <h3>Online Service</h3>
-              <p>Access to multiplayer games</p>
-            </div>
-          </div>
-          <p class="billingChange active">+$1/mo</p>
-          <p class="billingChange">+$10/yr</p>
-        </div>
-        <div class="checkField">
-          <div>
-            <input type="checkbox" id="largerStorage" name="Larger Storage" onchange="setValue(event, 'addOn')">
-            <label for="largerStorage"></label>
-            <div>
-              <h3>Larger Storage</h3>
-              <p>Extra 1TB of cloud save</p>
-            </div>
-          </div>
-          <p class="billingChange active">+$2/mo</p>
-          <p class="billingChange">+$20/yr</p>
-        </div>
-        <div class="checkField">
-          <div>
-            <input type="checkbox" id="customizableProfile" name="Customizable profile" onchange="setValue(event, 'addOn')">
-            <label for="customizableProfile"></label>
-            <div>
-              <h3>Customizable profile</h3>
-              <p>Custom theme on your profile</p>
-            </div>
-          </div>
-          <p class="billingChange active">+$2/mo</p>
-          <p class="billingChange">+$20/yr</p>
-        </div>
-      </div>
-    </fieldset>
-    <fieldset id="lastStep">
-      <div class="info">
-        <h2>Finishing up</h2>
-        <p>Double-check everything looks OK before confirming.</p>
-      </div>
-      <div class="summary">
-        <div>
-          <div>
-            <p id="plan"></p>
-            <button onclick="changeStep(undefined, 1)">Change</button>
-          </div>
-          <p id="planPrice"></p>
-        </div>
-        <hr id="ifAddOn">
-        <hr id="insertDivs" class="insertDivs">
-      </div>
-      <div class="total">
-        <p id="total"></p>
-        <p id="totalPrice"></p>
-      </div>
-    </fieldset>
-    <fieldset id="submit" class="submit">
-      <img src="assets/images/icon-thank-you.svg" alt="Thank You!" width="62.5" height="62.5">
-      <div>
-        <h2>Thank you!</h2>
-        <p>Thanks for confirming your subscription! We hope you have fun 
-          using our platform. If you ever need support, please feel free 
-          to email us at <a href="mailto:support@loremgaming.com">support@loremgaming.com</a>.</p>
-      </div>
-    </fieldset>
-  </form>
-  <div class="bottomNavigation">
-    <div>
-      <button id="goBackBtn" class="goBackBtn inactive" onclick="changeStep(false)">Go Back</button>
-      <button class="nextBtn" onclick="changeStep(true)">Next Step</button>
-      <button id="submitBtn" class="submitBtn" onclick="submit()">Confirm</button>
     </div>
   </div>
 </body>

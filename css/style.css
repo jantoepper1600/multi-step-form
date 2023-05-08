@@ -37,6 +37,7 @@
 
     --cool-gray: hsl(231, 11%, 63%);
     --cool-gray-25: hsla(231, 11%, 63%, 25%);
+    --cool-gray-15: hsla(231, 11%, 63%, 15%);
     --light-gray: hsl(229, 24%, 87%);
     --magnolia: hsl(217, 100%, 97%);
     --alabaster: hsl(231, 100%, 99%);
@@ -71,6 +72,10 @@ a {
     text-decoration: none;
 }
 
+.desktop {
+    display: none;
+}
+
 .yearly {
     display: grid;
     grid-template-rows: 0fr;
@@ -102,27 +107,33 @@ button:disabled {
 }
 
 .invalid {
-    outline: 2px solid var(--strawberry-red);
+    border: 2px solid var(--strawberry-red)!important;
 }
 
 body {
     padding: 2.5rem 0 7.5rem;
     min-height: 100vh;
     position: relative;
+    background: var(--magnolia);
+}
+
+body > div.desktopWrapper {
     display: grid;
     grid-auto-rows: min-content;
     gap: 2.5rem;
-    background: var(--magnolia);
-    isolation: isolate;
 }
 
-body > img {
+div.desktopNav > img:first-of-type {
     position: absolute;
     top: 0;
     z-index: -1;
 }
 
-body > nav {
+div.desktopNav > img:last-of-type {
+    display: none;
+}
+
+div.desktopNav > nav {
     margin-inline: auto;
     width: 90%;
     max-width: 12.5rem;
@@ -130,8 +141,14 @@ body > nav {
     justify-content: space-between;
 }
 
-nav > button {
-    width: 2.25rem;
+nav > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+nav > div > button {
+    height: 2.25rem;
     aspect-ratio: 1;
     background: transparent;
     border: 2px solid var(--alabaster);
@@ -141,19 +158,37 @@ nav > button {
     transition: .25s;
 }
 
-nav > button.active {
+nav > div > button.active {
     background: var(--light-blue);
     border-color: var(--light-blue);
     color: var(--marine-blue);
 }
 
+nav > div > div > p:first-of-type {
+    color: var(--light-gray);
+    font-size: .7rem;
+    line-height: 1.25;
+    opacity: .5;
+}
+
+nav > div > div > p:last-of-type {
+    color: var(--white);
+    font-size: .9rem;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+div.desktopForm > form {
+    height: 100%;
+}
+
 form > fieldset {
     padding: 2rem 1.625rem;
     margin-inline: auto;
+    max-width: 30rem;
+    width: 90%;
     display: none;
     gap: 1rem;
-    width: 90%;
-    max-width: 30rem;
     background: var(--white);
     border-radius: .75rem;
     box-shadow: .1rem .1rem 1rem 0 var(--cool-gray-25);
@@ -210,15 +245,15 @@ fieldset > .inputs {
 
 .inputs > div > .label + input {
     padding: .5rem 1rem;
-    border: 1px solid var(--light-gray);
+    border: 2px solid var(--light-gray);
     border-radius: .25rem;
     color: var(--cool-gray);
     font-weight: 500;
     transition: border-color .25s;
 }
 
-.inputs > div > .label + input:focus {
-    border-color: var(--purplish-blue);
+.inputs > div > .label + input:focus:not(.invalid) {
+    border: 2px solid var(--purplish-blue);
 }
 
 .inputs > .selectField {
@@ -488,7 +523,7 @@ form > .submit.active {
     color: var(--cool-gray);
 }
 
-body > .bottomNavigation {
+div.desktopForm > .bottomNavigation {
     padding: 1.125rem;
     position: absolute;
     inset: auto 0 0;
@@ -556,4 +591,122 @@ body > .bottomNavigation {
 
 .bottomNavigation.active > div > button.submitBtn:hover {
     opacity: .75;
+}
+
+@media (min-width: 50rem) {
+    .desktop {
+        display: block;
+    }
+
+    body {
+        padding: 1rem;
+        display: grid;
+        place-items: center;
+    }
+
+    body > div.desktopWrapper {
+        padding: 1rem;
+        max-width: 55rem;
+        width: 90%;
+        max-height: 35rem;
+        height: 90%;
+        display: flex;
+        justify-content: space-between;
+        gap: 0;
+        background: var(--white);
+        border-radius: .5rem;
+        box-shadow: .1rem .1rem 1rem 0 var(--cool-gray-15);
+    }
+
+    div.desktopWrapper > div.desktopNav {
+        padding: 2rem 1rem;
+        width: 30%;
+        position: relative;
+        border-radius: .5rem;
+        overflow: hidden;
+        isolation: isolate;
+    }
+
+    div.desktopNav > img:first-of-type {
+        display: none;
+    }
+
+    div.desktopNav > img:last-of-type {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        display: block;
+        object-fit: cover;
+    }
+
+    div.desktopNav > nav {
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    div.desktopWrapper > div.desktopForm {
+        width: 70%;
+        padding-inline: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    form > fieldset {
+        padding-inline: 0;
+        max-width: none;
+        width: 100%;
+        gap: 1.5rem;
+        box-shadow: none;
+    }
+
+    form > fieldset#submit {
+        height: 100%;
+        justify-content: center;
+    }
+
+    .info > h2 {
+        font-size: 1.75rem;
+    }
+
+    .info > p {
+        font-size: 1rem;
+    }
+
+    fieldset > .inputs {
+        gap: 1rem;
+    }
+
+    fieldset#secondStep > .inputs {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .inputs > .selectField {
+        display: grid;
+        gap: 2.5rem;
+    }
+
+    .inputs > .checkField {
+        padding: 1rem 1.25rem;
+    }
+
+    .total > p:last-of-type {
+        font-size: 1.1rem;
+    }
+
+    div.desktopForm > div.bottomNavigation {
+        padding-inline: 0;
+        position: relative;
+        background: none;
+    }
+
+    div.bottomNavigation > div {
+        width: 100%;
+    }
+}
+
+@media (min-width: 60rem) {
+    div.desktopWrapper > div.desktopForm {
+        padding-inline: 5rem;
+    }
 }

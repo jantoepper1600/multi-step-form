@@ -14,12 +14,12 @@ prices.set('Customizable profile', [2, 20]);
 
 const validity = [false, false, false, true];
 
-const getNavChildren = document.getElementsByTagName('nav')[0].children;
+const getNavButtons = document.getElementsByTagName('nav')[0].getElementsByTagName('button');
 const disableBtns = boolean => {
-    if(boolean) for(let btn = step + 1; btn < getNavChildren.length; btn++) getNavChildren[btn].disabled = true;
+    if(boolean) for(let btn = step + 1; btn < getNavButtons.length; btn++) getNavButtons[btn].disabled = true;
     else {
-        for(let btn = step; btn < getNavChildren.length - 1; btn++) {
-            if(validity[btn]) getNavChildren[btn + 1].disabled = false;
+        for(let btn = step; btn < getNavButtons.length - 1; btn++) {
+            if(validity[btn]) getNavButtons[btn + 1].disabled = false;
             else break;
         }
     }
@@ -53,7 +53,7 @@ const checkSecondStep = submit => {
 }
 
 
-for(let btn of getNavChildren) btn.addEventListener('click', (e) => changeStep(undefined, Number(e.target.innerText) - 1));
+for(let btn of getNavButtons) btn.addEventListener('click', (e) => changeStep(undefined, Number(e.target.innerText) - 1));
 
 const steps = new Map();
 steps.set(0, ['firstStep', checkFirstStep]);
@@ -105,18 +105,18 @@ const changeStep = (bottom, btn) => {
         let totalPrice = 0;
         totalPrice += billing ? prices.get(summary.get('plan'))[0] : prices.get(summary.get('plan'))[1];
         for(let addOn of addOns) totalPrice += billing ? prices.get(addOn)[0] : prices.get(addOn)[1];
-        document.getElementById('totalPrice').innerText = `+$${totalPrice}/${billing ? 'mo' : 'yr'}`;
+        document.getElementById('totalPrice').innerText = `$${totalPrice}/${billing ? 'mo' : 'yr'}`;
         bottomNavigation.classList.add('active');
     } else bottomNavigation.classList.remove('active');
-    getNavChildren[step].classList.remove('active');
+    getNavButtons[step].classList.remove('active');
     document.getElementById(steps.get(step)[0]).classList.remove('active');
     if(bottom != undefined) bottom ? step++ : step--;
     if(btn != undefined) btn < step ? step -= step - btn : step += btn - step;
     if(step == 2) {
         validity[step] = true;
-        getNavChildren[3].disabled = false;
+        getNavButtons[3].disabled = false;
     }
-    getNavChildren[step].classList.add('active');
+    getNavButtons[step].classList.add('active');
     document.getElementById(steps.get(step)[0]).classList.add('active');
     step == 0 ? document.getElementById('goBackBtn').classList.add('inactive') : document.getElementById('goBackBtn').classList.remove('inactive');
 }
@@ -156,7 +156,7 @@ const setValue = (e, arr) => {
 }
 
 const submit = () => {
-    alert('You find the request body in the console.');
+    alert('Den Request Body findest du in der Console.');
     document.getElementById('lastStep').classList.remove('active');
     document.getElementById('submit').classList.add('active');
     document.getElementsByClassName('bottomNavigation')[0].style.display = 'none';
